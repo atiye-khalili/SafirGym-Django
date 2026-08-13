@@ -58,7 +58,7 @@ class GymClass(models.Model):       #3
         verbose_name_plural = 'کلاس‌ها'
 
 
-class News(models.Model):
+class News(models.Model):   #4
     title = models.CharField(max_length=100, verbose_name='عنوان')
     content = models.TextField(verbose_name='محتوا')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='ایجاد شده در تاریخ')
