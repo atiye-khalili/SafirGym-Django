@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gymclass</title>
+    <title>trainer</title>
 </head>
 <style>
     h1{
@@ -20,12 +20,13 @@
     }
 </style>
 <body>
-    <h1>:لیست کلاس ها</h1>
+    <h1>:لیست مربیان</h1>
     <ul>
-        {% for cl in classes %}
-        <h2>
-            <li>{{ cl.class_name }}</li>
-        </h2>
+        {% for t in trainer %}
+            <h2>
+                <li><a href="{% url 'trainer_detail' trainer_id=t.id %}">{{ t.first_name }} {{ t.last_name }}</a></li>
+            </h2>
         {% endfor %}
     </ul>
 </body>
+</html>

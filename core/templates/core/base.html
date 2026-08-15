@@ -4,11 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>safir</title>
+    <title>
+        {% block title %} 
+        
+        {% endblock %}
+    </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<style>
+        <style>
     h1{
         background-color: lightblue;
         color: white;
@@ -18,17 +21,12 @@
         text-align: center;
     }
 </style>
-<body>
-    <h1>
-        باشـگاه ورزشـی سفـیر
-    </h1>
-    <h2 style="text-align: center; color: lightgreen;">
-        {{ firstname }} عزیز به وب سایت ورزشی سفیر خوش آمدید
-    </h2>
-
-
-
-
+</head>
+<body dir="rtl">
+    <div class='container'>
+    {% block content %}
+    
+    {% endblock %}
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
