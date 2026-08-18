@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>news</title>
+    <title>trainer_detail</title>
 </head>
 <style>
     h1{
@@ -11,24 +11,31 @@
         color: white;
         text-align: center;
     }
-    h2{color: black;
-        text-align: center;
+    h2{color: lightgreen;
+        text-align: right;
     }
     ul {
         text-align: center;
         list-style-position: inside;
     }
-</style>
+    small {
+    display: block;
+    text-align: right;
+    color: black;
+    }
+    p {
+        text-align: right;
+    }
+    </style>
 <body>
-    <h1>:جدیدترین خبرها</h1>
-    <ul>
-        {% for n in news %}
-            <h2>
-                <li><a href="{% url 'news_detail' news_id=n.id %}">{{ n.title }}</a></li>
-            </h2>
-        
-    {% endfor %}
-</ul>
-
+    <h2>
+        {{ news.title}}
+    </h2>
+    <p>
+        {{ news.content }}
+    </p>
+    <small>
+        {{ news.created_at }}
+    </small>
 </body>
 </html>

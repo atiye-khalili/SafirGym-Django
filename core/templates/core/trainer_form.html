@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+
+Trainer Form
+
+{% endblock %}
+
+{% block content %}
+
+<form action="{% url 'trainer_form' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="مربی جدید افزوده شد" class="btn btn-primary"></input>
+</form>
+
+{% endblock %}

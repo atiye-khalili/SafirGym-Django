@@ -61,6 +61,8 @@ class GymClass(models.Model):       #3
 class News(models.Model):   #4
     title = models.CharField(max_length=100, verbose_name='عنوان')
     content = models.TextField(verbose_name='محتوا')
+    image = models.ImageField(upload_to='news_images/', verbose_name='تصویر',
+        null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='ایجاد شده در تاریخ')
 
     def __str__(self):
