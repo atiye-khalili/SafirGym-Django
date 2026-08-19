@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
 
@@ -29,13 +30,22 @@ class ClassNameChoices(models.TextChoices):
     TRX = ('trx', 'تی آر ایکس')
     CROSSFIT = ('crossfit', 'کراسفیت')
 
+
+# class Register(AbstractUser):       #1
+
+
+
+#     class Meta():
+#         verbose_name = 'ثبت نام'
+#         verbose_name_plural = 'ثبت نام'‌
+
 class Trainer(models.Model):        #2
     first_name = models.CharField(max_length=30, verbose_name='نام')
     last_name = models.CharField(max_length=30, verbose_name='نام خانوادگی')
     birthdate = models.DateField(verbose_name='تاریخ تولد')
     phone_number = models.CharField(max_length=11, verbose_name='شماره تلفن')
     specialization = models.CharField(max_length=50,choices=ClassNameChoices.choices ,verbose_name='تخصص')
-    experience = models.CharField(max_length=50, verbose_name= 'سابقه کاری(سال)')
+    experience = models.PositiveSmallIntegerField(verbose_name='سابقه کاری(سال)')
     biography = models.TextField(verbose_name='بیوگرافی', null=True)
 
     def __str__(self):
