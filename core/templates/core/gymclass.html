@@ -1,31 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gymclass</title>
-</head>
-<style>
-    h1{
-        background-color: lightblue;
-        color: white;
-        text-align: center;
-    }
-    h2{color: lightgreen;
-        text-align: center;
-    }
-    ul {
-        text-align: center;
-        list-style-position: inside;
-    }
-</style>
-<body>
-    <h1>:لیست کلاس ها</h1>
-    <ul>
-        {% for cl in classes %}
-        <h2>
-            <li>{{ cl.class_name }}</li>
-        </h2>
-        {% endfor %}
-    </ul>
-</body>
+{% extends 'core/base.html' %}
+
+{% block title %}
+    gym classes
+{% endblock %}
+
+{% block main %}
+    <h2 class="mt-4">کلاس‌های ورزشی</h2>
+
+    <table class="table table-bordered table-striped mt-3">
+        <thead>
+            <tr>
+                <th>نام کلاس</th>
+                <th>مربی</th>
+                <th>ظرفیت</th>
+                <th>برنامه زمانی</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in classes %}
+                <tr>
+                    <td>{{ c.get_class_name_display }}</td>
+                    <td>{{ c.trainer.first_name }} {{ c.trainer.last_name }}</td>
+                    <td>{{ c.capacity }}</td>
+                    <td>{{ c.schedule }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

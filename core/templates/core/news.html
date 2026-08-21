@@ -1,34 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>news</title>
-</head>
-<style>
-    h1{
-        background-color: lightblue;
-        color: white;
-        text-align: center;
-    }
-    h2{color: black;
-        text-align: center;
-    }
-    ul {
-        text-align: center;
-        list-style-position: inside;
-    }
-</style>
-<body>
-    <h1>:جدیدترین خبرها</h1>
+{% extends 'core/base.html' %}
+
+{% block title %}
+    news
+{% endblock %}
+
+{% block main %}
+    <h2 class="mt-4">اخبار باشگاه</h2>
+
     <ul>
         {% for n in news %}
-            <h2>
-                <li><a href="{% url 'news_detail' news_id=n.id %}">{{ n.title }}</a></li>
-            </h2>
-        
-    {% endfor %}
-</ul>
-
-</body>
-</html>
+            <li>
+                <a href="{% url 'news_detail' news_id=n.id %}">
+                    {{ n.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

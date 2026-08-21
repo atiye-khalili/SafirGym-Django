@@ -1,41 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>trainer_detail</title>
-</head>
-<style>
-    h1{
-        background-color: lightblue;
-        color: white;
-        text-align: center;
-    }
-    h2{color: lightgreen;
-        text-align: right;
-    }
-    ul {
-        text-align: center;
-        list-style-position: inside;
-    }
-    small {
-    display: block;
-    text-align: right;
-    color: black;
-    }
-    p {
-        text-align: right;
-    }
-    </style>
-<body>
-    <h2>
-        {{ news.title}}
-    </h2>
-    <p>
-        {{ news.content }}
-    </p>
-    <small>
-        {{ news.created_at }}
-    </small>
-</body>
-</html>
+{% extends 'core/base.html' %}
+
+{% block title %}
+    {{ news.title }}
+{% endblock %}
+
+{% block main %}
+    <h2>{{ news.title }}</h2>
+
+    <small>{{ news.created_at }}</small>
+
+    {% if news.image %}
+        <div>
+            <img src="{{ news.image.url }}" alt="{{ news.title }}" class="w-100">
+        </div>
+    {% endif %}
+
+    <p>{{ news.content }}</p>
+
+    <a href="{% url 'news' %}" class="btn btn-secondary">بازگشت به اخبار</a>
+{% endblock %}

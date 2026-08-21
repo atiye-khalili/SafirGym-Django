@@ -37,5 +37,5 @@ def register(request):
             user.password = make_password(user.password)
             user.save()
             messages.success(request, 'شما با موفقیت ثبت نام کردید')
-            return redirect('login')
+            return redirect('core/home.html')
     return render(request, 'account/register.html', context={'form': form})

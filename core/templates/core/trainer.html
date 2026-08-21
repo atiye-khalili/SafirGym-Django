@@ -1,32 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>trainer</title>
-</head>
-<style>
-    h1{
-        background-color: lightblue;
-        color: white;
-        text-align: center;
-    }
-    h2{color: lightgreen;
-        text-align: center;
-    }
-    ul {
-        text-align: center;
-        list-style-position: inside;
-    }
-</style>
-<body>
-    <h1>:لیست مربیان</h1>
-    <ul>
+{% extends 'core/base.html' %}
+
+{% block title %}
+    trainers
+{% endblock %}
+
+{% block main %}
+    <h2 class="mt-4">لیست مربیان</h2>
+
+    <ul class="list-group mt-3">
         {% for t in trainer %}
-            <h2>
-                <li><a href="{% url 'trainer_detail' trainer_id=t.id %}">{{ t.first_name }} {{ t.last_name }}</a></li>
-            </h2>
+            <li class="list-group-item">
+                <a href="{% url 'trainer_detail' trainer_id=t.id %}">
+                    {{ t.first_name }} {{ t.last_name }} — {{ t.get_specialization_display }}
+                </a>
+            </li>
         {% endfor %}
     </ul>
-</body>
-</html>
+
+    <a href="{% url 'trainer_form' %}" class="btn btn-success mt-3">ایجاد مربی جدید</a>
+{% endblock %}

@@ -23,12 +23,25 @@ class RegisterForm(forms.ModelForm):
             'father_name', 'birth_date', 'address', 'phone_number',
             'has_medical_condition', 'describe_condition'
         ]
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'password': forms.PasswordInput(attrs={'class': 'form-control'}),
+            'father_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'birth_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'address': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
+            'has_medical_condition': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'describe_condition': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+        }
 
     def clean(self):
         data = super().clean()
         password = data.get('password')
         confirm_password = data.get('confirm_password')
 
-        if not password == confirm_password:
+        if password and confirm_password and password != confirm_password:
             raise ValidationError('گذرواژه با تکرار آن مطابقت نداشت')
         return data

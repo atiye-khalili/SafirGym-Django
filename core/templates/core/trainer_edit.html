@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+    trainer_edit
+{% endblock %}
+
+{% block main %}
+    <form action="{% url 'trainer_edit' trainer_id=t.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="ویرایش" class="btn btn-primary">
+    </form>
+{% endblock %}

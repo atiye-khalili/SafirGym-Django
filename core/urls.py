@@ -9,5 +9,7 @@ urlpatterns = [
     path('trainer/detail/<int:trainer_id>/', trainer_detail, name='trainer_detail'),
     path('news/detail/<int:news_id>/', news_detail, name='news_detail'),
     path('trainer/form/', trainer_form , name='trainer_form'),
-    path('register/form/', register_form, name='register_form')
+    path('trainer/edit/<int:trainer_id>/', trainer_edit, name='trainer_edit'),
+    path('trainer/delete/<int:trainer_id>/', trainer_delete, name='trainer_delete'),
+    # path('register/form/', register_form, name='register_form')
 ]

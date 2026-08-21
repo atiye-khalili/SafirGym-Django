@@ -1,42 +1,27 @@
-{% load static %} 
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        {% block title %} 
-        
-        {% endblock %}
+        {% block title %}{% endblock %}
     </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        <style>
-    h1{
-        background-color: lightblue;
-        color: black;
-        text-align: center;
-    }
-    h2{color: lightblue;
-        text-align: center;
-    }
-    small {
-    display: block;
-    text-align: right;
-    color: black;
-    }
-    p {
-        text-align: right;
-    }
-</style>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 <body dir="rtl">
-    <div class='container'>
-    {% block content %}
-    
-    {% endblock %}
+    <div class="container">
+        {% for message in messages %}
+            <div class="alert alert-success text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
 
+        {% block main %}
+        {% endblock %}
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

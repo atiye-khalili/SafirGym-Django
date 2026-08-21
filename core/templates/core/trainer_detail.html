@@ -1,41 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>trainer_detail</title>
-</head>
-<style>
-    h1{
-        background-color: lightblue;
-        color: white;
-        text-align: center;
-    }
-    h2{color: lightgreen;
-        text-align: right;
-    }
-    ul {
-        text-align: center;
-        list-style-position: inside;
-    }
-    small {
-    display: block;
-    text-align: right;
-    color: black;
-    }
-    p {
-        text-align: right;
-    }
-    </style>
-<body>
-    <h2>
-        {{ detail.first_name }} {{ detail.last_name }}
-    </h2>
-    <p>
-        {{ detail.biography }}
+{% extends 'core/base.html' %}
+
+{% block title %}
+    {{ detail.first_name }} {{ detail.last_name }}
+{% endblock %}
+
+{% block main %}
+    <h2 class="mt-4">{{ detail.first_name }} {{ detail.last_name }}</h2>
+
+    <p class="text-muted">
+        {{ detail.get_specialization_display }} | سابقه: {{ detail.experience }} سال
     </p>
-    <small>
-        {{ detail.specialization }}
-    </small>
-</body>
-</html>
+
+    <p>{{ detail.biography }}</p>
+
+    <p><strong>تلفن:</strong> {{ detail.phone_number }}</p>
+
+    <a href="{% url 'trainer_edit' trainer_id=detail.id %}" class="btn btn-warning">ویرایش</a>
+    <a href="{% url 'trainer_delete' trainer_id=detail.id %}" class="btn btn-danger">حذف</a>
+    <a href="{% url 'trainer' %}" class="btn btn-secondary">بازگشت به لیست</a> 
+{% endblock %}

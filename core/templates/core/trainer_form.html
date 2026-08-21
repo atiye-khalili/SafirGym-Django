@@ -1,17 +1,19 @@
 {% extends 'core/base.html' %}
 
 {% block title %}
-
-Trainer Form
-
+    trainer_form
 {% endblock %}
 
-{% block content %}
+{% block main %}
+    <div class="row">
+        <div class="col-sm-6 mt-4">
+            <h3>ثبت مربی جدید</h3>
 
-<form action="{% url 'trainer_form' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="مربی جدید افزوده شد" class="btn btn-primary"pyt></input>
-</form>
-
+            <form action="{% url 'trainer_form' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-primary" value="ثبت مربی">
+            </form>
+        </div>
+    </div>
 {% endblock %}
